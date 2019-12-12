@@ -1,0 +1,30 @@
+{
+  "name": "jest-spok",
+  "version": "0.0.0",
+  "description": "Jest Matchers for spok specifications.",
+  "scripts": {
+    "lint": "prettier -c src/**/*.ts src/*.ts",
+    "test": "jest --no-colors",
+    "tsc": "tsc -b",
+    "prepublish": "npm run tsc && npm run lint && npm run test"
+  },
+  "main": "dist/jest-spok.js",
+  "types": "dist/jest-spok.d.ts",
+  "repository": "git@github.com:thlorenz/jest-spok.git",
+  "author": "Thorsten Lorenz <thlorenz@gmx.de>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/deep-equal": "^1.0.1",
+    "@types/jest": "^24.0.23",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.3"
+  },
+  "dependencies": {
+    "deep-equal": "^1.1.1",
+    "jest-matcher-utils": "^24.9.0",
+    "spok": "^1.1.0",
+    "tslib": "^1.10.0"
+  }
+}
