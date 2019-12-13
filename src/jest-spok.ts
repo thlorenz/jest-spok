@@ -1,4 +1,5 @@
 import spok, { Specifications } from 'spok'
+import ocat = require('ocat')
 import deepEqual from 'deep-equal'
 import { matcherHint, printExpected, printReceived } from 'jest-matcher-utils'
 
@@ -19,6 +20,18 @@ function failMessage(actual: object, expected: object, assert: Assert) {
   }
 }
 
+function renderMessage(actual: object) {
+  return () => {
+    const res =
+      matcherHint('toSatisfy') +
+      '\n\n' +
+      'No Specifications provided, adapt your code as follows and edit the' +
+      ' specs as needed:\n\n' +
+      `  expect(actual)\n` +
+      `    .toSatisfy(${ocat.inspect(actual)})\n`
+    return res
+  }
+}
 class Assert {
   failed: string[] = []
 
@@ -32,7 +45,11 @@ class Assert {
   }
 }
 
-function toSatisfy(received: object, expected: Specifications) {
+function toSatisfy(received: object, expected?: Specifications) {
+  if (expected == null) {
+    return { pass: false, message: renderMessage(received) }
+  }
+
   const assert = new Assert()
   spok(assert, received, expected)
   const pass = assert.failed.length === 0
@@ -42,6 +59,8 @@ function toSatisfy(received: object, expected: Specifications) {
 }
 
 export default { toSatisfy }
+export const ocatOpts = ocat.opts
+export { spok }
 
 declare global {
   namespace jest {
@@ -51,7 +70,7 @@ declare global {
        * @example
        * expect({ foo: 1, bar: {} }).toSatisfy({ foo: spok.ge(2), bar: spok.string })
        */
-      toSatisfy<T>(received: object): JestMatchers<T>
+      toSatisfy<T>(expected?: object): JestMatchers<T>
     }
     interface Matchers<R, T> {
       /**
@@ -59,7 +78,7 @@ declare global {
        * @example
        * expect({ foo: 1, bar: {} }).toSatisfy({ foo: spok.ge(2), bar: spok.string })
        */
-      toSatisfy(received: object): R
+      toSatisfy(expected?: object): R
     }
   }
 }

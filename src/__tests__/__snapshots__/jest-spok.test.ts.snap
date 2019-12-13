@@ -22,6 +22,16 @@ Received:
   {\\"uno\\": {\\"eins\\": 1, \\"one\\": 1, \\"unoDeep\\": {\\"eleven\\": 11, \\"elf\\": 11}}}"
 `;
 
+exports[`no specs prints helping message 1`] = `
+"expect(received).toSatisfy(expected)
+
+No Specifications provided, adapt your code as follows and edit the specs as needed:
+
+  expect(actual)
+    .toSatisfy( [ { foo: 1 }, { bar: 2 }, { baz: 3 } ])
+"
+`;
+
 exports[`simple objects failing 1`] = `
 "expect(received).toSatisfy(expected)
 

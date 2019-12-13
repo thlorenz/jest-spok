@@ -1,7 +1,7 @@
-import matchers from '../jest-spok'
-import spok from 'spok'
-
+import matchers, { ocatOpts, spok } from '../jest-spok'
+ocatOpts.color = false
 spok.color = false
+
 expect.extend(matchers)
 
 describe('simple objects', () => {
@@ -43,5 +43,12 @@ describe('arrays', () => {
         { bar: spok.le(1) },
         { baz: spok.string },
       ])
+    ).toThrowErrorMatchingSnapshot())
+})
+
+describe('no specs', () => {
+  it('prints helping message', () =>
+    expect(() =>
+      expect([{ foo: 1 }, { bar: 2 }, { baz: 3 }]).toSatisfy()
     ).toThrowErrorMatchingSnapshot())
 })
