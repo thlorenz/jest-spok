@@ -1,6 +1,6 @@
 {
   "name": "jest-spok",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Jest Matchers for spok specifications.",
   "scripts": {
     "lint": "prettier -c src/**/*.ts src/*.ts",
