@@ -36,12 +36,18 @@ class Assert {
   failed: string[] = []
 
   equal(actual: any, expected: any, msg?: string): void {
-    if (actual !== expected) this.failed.push(msg!)
+    if (actual !== expected) {
+      if (!msg!.includes('satisfies')) msg += ` (expected ${expected})`
+      this.failed.push(msg!)
+    }
   }
 
   deepEqual(actual: any, expected: any, msg?: string): void {
     const pass = deepEqual(actual, expected)
-    if (!pass) this.failed.push(msg!)
+    if (!pass) {
+      if (!msg!.includes('satisfies')) msg += ` (expected ${expected})`
+      this.failed.push(msg!)
+    }
   }
 }
 

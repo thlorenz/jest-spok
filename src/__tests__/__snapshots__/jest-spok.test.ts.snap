@@ -11,6 +11,16 @@ Received:
   [{\\"foo\\": 1}, {\\"bar\\": 2}, {\\"baz\\": 3}]"
 `;
 
+exports[`literal specs partial failure 1`] = `
+"expect(received).toSatisfy(expected)
+
+Mismatches:
+  \\"foo = 1 (expected 0)\\"
+
+Received:
+  {\\"bar\\": 2, \\"foo\\": 1}"
+`;
+
 exports[`nested objects failing 1`] = `
 "expect(received).toSatisfy(expected)
 

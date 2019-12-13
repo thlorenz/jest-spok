@@ -52,3 +52,10 @@ describe('no specs', () => {
       expect([{ foo: 1 }, { bar: 2 }, { baz: 3 }]).toSatisfy()
     ).toThrowErrorMatchingSnapshot())
 })
+
+describe('literal specs', () => {
+  it('partial failure', () =>
+    expect(() =>
+      expect({ foo: 1, bar: 2 }).toSatisfy({ foo: 0, bar: 2 })
+    ).toThrowErrorMatchingSnapshot())
+})
