@@ -1,4 +1,5 @@
 import matchers, { ocatOpts, spok } from '../jest-spok'
+
 ocatOpts.color = false
 spok.color = false
 

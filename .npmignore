@@ -1,7 +1,0 @@
-.idea/
-.github/
-.prettierrc
-jest.config.js
-tsconfig.json
-src/
-dist/

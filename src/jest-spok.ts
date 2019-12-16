@@ -51,7 +51,10 @@ class Assert {
   }
 }
 
-function toSatisfy(received: object, expected?: Specifications) {
+function toSatisfy<T extends object>(
+  received: T,
+  expected?: Specifications<T>
+) {
   if (expected == null) {
     return { pass: false, message: renderMessage(received) }
   }
@@ -76,7 +79,7 @@ declare global {
        * @example
        * expect({ foo: 1, bar: {} }).toSatisfy({ foo: spok.ge(2), bar: spok.string })
        */
-      toSatisfy<T>(expected?: object): JestMatchers<T>
+      toSatisfy<T>(expected?: Specifications<T>): JestMatchers<T>
     }
     interface Matchers<R, T> {
       /**
@@ -84,7 +87,7 @@ declare global {
        * @example
        * expect({ foo: 1, bar: {} }).toSatisfy({ foo: spok.ge(2), bar: spok.string })
        */
-      toSatisfy(expected?: object): R
+      toSatisfy(expected?: Specifications<T>): R
     }
   }
 }

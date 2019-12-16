@@ -8,6 +8,12 @@
     "tsc": "tsc -b",
     "prepublish": "npm run tsc && npm run lint && npm run test"
   },
+  "files": [
+    "dist/*.ts",
+    "dist/*.ts.map",
+    "dist/*.js",
+    "dist/*.js.map"
+  ],
   "main": "dist/jest-spok.js",
   "types": "dist/jest-spok.d.ts",
   "repository": "git@github.com:thlorenz/jest-spok.git",
