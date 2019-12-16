@@ -7,6 +7,14 @@ function prettyFailed(failed: string[]) {
   return failed.map((x) => '  ' + printExpected(x)).join('\n')
 }
 
+function inspectAndIndent(actual: object, indent = '      ') {
+  const inspected = ocat.inspect(actual, { depth: 20 })
+  return inspected
+    .split('\n')
+    .map((x: string) => indent + x)
+    .join('\n')
+}
+
 function failMessage(actual: object, expected: object, assert: Assert) {
   return () => {
     const res =
@@ -28,7 +36,7 @@ function renderMessage(actual: object) {
       'No Specifications provided, adapt your code as follows and edit the' +
       ' specs as needed:\n\n' +
       `  expect(actual)\n` +
-      `    .toSatisfy(${ocat.inspect(actual)})\n`
+      `    .toSatisfy(\n${inspectAndIndent(actual)}\n     )\n`
     return res
   }
 }

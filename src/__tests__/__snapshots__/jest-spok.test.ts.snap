@@ -38,7 +38,9 @@ exports[`no specs prints helping message 1`] = `
 No Specifications provided, adapt your code as follows and edit the specs as needed:
 
   expect(actual)
-    .toSatisfy( [ { foo: 1 }, { bar: 2 }, { baz: 3 } ])
+    .toSatisfy(
+       [ { foo: 1 }, { bar: 2 }, { baz: 3 } ]
+     )
 "
 `;
 
