@@ -3,6 +3,8 @@ import deepEqual from 'deep-equal'
 import { matcherHint, printExpected, printReceived } from 'jest-matcher-utils'
 import ocat = require('ocat')
 
+export * from 'spok'
+
 function prettyFailed(failed: string[]) {
   return failed.map((x) => '  ' + printExpected(x)).join('\n')
 }
