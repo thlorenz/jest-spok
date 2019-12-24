@@ -8,7 +8,7 @@ Mismatches:
   \\"·· baz = 3  [90msatisfies: spok.string[39m\\"
 
 Received:
-  [{\\"foo\\": 1}, {\\"bar\\": 2}, {\\"baz\\": 3}]"
+       [ { foo: 1 }, { bar: 2 }, { baz: 3 } ]"
 `;
 
 exports[`literal specs partial failure 1`] = `
@@ -18,7 +18,7 @@ Mismatches:
   \\"foo = 1 (expected 0)\\"
 
 Received:
-  {\\"bar\\": 2, \\"foo\\": 1}"
+       { foo: 1, bar: 2 }"
 `;
 
 exports[`nested objects failing 1`] = `
@@ -29,7 +29,7 @@ Mismatches:
   \\"·· ·· elf = 11  [90msatisfies: spok.function[39m\\"
 
 Received:
-  {\\"uno\\": {\\"eins\\": 1, \\"one\\": 1, \\"unoDeep\\": {\\"eleven\\": 11, \\"elf\\": 11}}}"
+       { uno: { eins: 1, one: 1, unoDeep: { elf: 11, eleven: 11 } } }"
 `;
 
 exports[`no specs prints helping message 1`] = `
@@ -52,5 +52,5 @@ Mismatches:
   \\"bar = {}  [90msatisfies: spok.string[39m\\"
 
 Received:
-  {\\"bar\\": {}, \\"baz\\": 3, \\"foo\\": 1}"
+       { foo: 1, bar: {}, baz: 3 }"
 `;

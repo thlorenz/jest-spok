@@ -1,6 +1,6 @@
 import spok, { Specifications } from 'spok'
 import deepEqual from 'deep-equal'
-import { matcherHint, printExpected, printReceived } from 'jest-matcher-utils'
+import { matcherHint, printExpected } from 'jest-matcher-utils'
 import ocat = require('ocat')
 
 export * from 'spok'
@@ -24,8 +24,7 @@ function failMessage(actual: object, expected: object, assert: Assert) {
       '\n\n' +
       'Mismatches:\n' +
       `${prettyFailed(assert.failed)}\n\n` +
-      'Received:\n' +
-      `  ${printReceived(actual)}`
+      `Received:\n${inspectAndIndent(actual)}`
     return res
   }
 }
