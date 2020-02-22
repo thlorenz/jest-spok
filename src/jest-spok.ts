@@ -94,9 +94,18 @@ function satisfy<P extends object, T extends object>(
   if (pass) return { pass: true, message: () => 'passed' }
   return { pass: false, message: failMessage(received, expected, assert) }
 }
+
+function inspoct(val: object, postfix = '\n\n') {
+  const inspected = inspectAndIndent(val, '  ')
+  if (typeof process === 'undefined') {
+    console.log(inspected)
+  } else {
+    process.stdout.write(inspected + postfix)
+  }
+}
 export default { toSatisfy, toSatisfyAny }
 export const ocatOpts = ocat.opts
-export { spok }
+export { spok, inspoct }
 
 declare global {
   namespace jest {

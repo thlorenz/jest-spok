@@ -15,7 +15,8 @@
     "noUnusedLocals": true,
     "noFallthroughCasesInSwitch": true,
     "types": [
-      "jest"
+      "jest",
+      "node"
     ],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
